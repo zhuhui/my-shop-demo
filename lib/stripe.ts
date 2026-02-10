@@ -1,6 +1,9 @@
 import Stripe from 'stripe'
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+// 确保在构建阶段不会崩溃，或者提供一个备用值
+const stripeKey = process.env.STRIPE_SECRET_KEY || 'sk_test_mock_key_for_build';
+
+export const stripe = new Stripe(stripeKey, {
   typescript: true,
 })
 
